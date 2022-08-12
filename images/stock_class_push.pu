@@ -7,7 +7,7 @@ class StockManagement{
 }
 class Handling{
     value : ItemHandling
-    Handling(shipping : Shipping)
+    Handling(stock : Stock, shipping : Shipping)
     updateAvailable(...)  : void
     updateRequest(...)  : void
     getValue() : ItemHandling
