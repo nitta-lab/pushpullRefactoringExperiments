@@ -17,7 +17,7 @@ class HandsA{
 class LoseA{
     value : boolean 
     LoseA()
-    updateHandsA(handsA : HandsA) : void
+    updateHandsA(handsA : List<Card>) : void
     getValue() : boolean
 }
 Algo -->"1" HandsA :handsA
