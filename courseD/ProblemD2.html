@@ -57,7 +57,7 @@
     StockManagement，Handling，Shipping クラスのいずれも resources パッケージの中に入っています．<br>
 </p>
 <p>
-    これを，以下のクラス図とシーケンス図に示すようなPUSH型のデータ転送になるよう，手作業でリファクタリングを行っていただきます．<br>
+    これを，以下のクラス図とシーケンス図に示すようなPULL型のデータ転送になるよう，手作業でリファクタリングを行っていただきます．<br>
     <img src="../images/stock_class_pull.jpg" class = "halfSize">
     <img src="../images/stock_seq_pull.jpg" class = "halfSize"><br>
     今度はPULL型のデータ転送であるため，Shipping クラスの getValue() メソッドから Handling クラスの getValue() メソッドを呼び出すために Shipping クラスが Handling クラスを参照していることに注意してください．<br>
