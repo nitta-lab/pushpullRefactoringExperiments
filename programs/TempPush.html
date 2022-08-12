@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<title>華氏摂氏変換プログラム(PUSH)</title>
+    <meta charset="UTF-8">
+    <!--    <link rel="stylesheet" href="sample.css">-->
+    <!-- XRegExp is bundled with the final shCore.js during build -->
+    <script type="text/javascript" src="../syntaxhighlighter-3.0.83/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter-3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="../syntaxhighlighter-3.0.83/scripts/shBrushJava.js"></script>
+    <link rel="stylesheet" href="../syntaxhighlighter-3.0.83/styles/shCoreEclipse.css" type="text/css" />
+    <link rel="stylesheet" href="../syntaxhighlighter-3.0.83/styles/shThemeEclipse.css" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body>
+<h1>華氏摂氏変換プログラム(PUSH)</h1>
+
+<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">
+<pre class="brush:java; gutter:false" id="E">
+    public class Main {
+        public static void main(String[] args) {
+            TempC tempC = new TempC();
+            TempF tempF = new TempF(tempC);
+            tempF.setValue(68);
+            System.out.println(tempC.getValue());
+        }
+    }
+
+    public class TempF {
+        double value;
+        TempC tempC;
+
+        public TempF(TempC tempC) {
+            this.tempC = tempC;
+        }
+
+        public void setValue(double tempF) {
+            this.value = tempF;
+            tempC.updateTemp(value);
+        }
+
+        public double getValue() {
+            return value;
+        }
+    }
+
+    public class TempC {
+        double value;
+
+        public TempC() {
+        }
+
+        public void updateTemp(double tempF) {
+            this.value = (tempF - 32) / 1.8;
+        }
+
+        public double getValue() {
+            return value;
+        }
+    }
+</pre>
+</div>
+</body>

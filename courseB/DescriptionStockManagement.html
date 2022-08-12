@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<title>StockManagement説明</title>
+<meta charset="UTF-8">
+</head>
+<style>
+.image_size{
+	width: 600px;
+	height: 400px;
+}
+</style>
+<body>
+<h1>StockManagement の概要説明</h1>
+<p>「StockManagement」は，ソフトウェア工学分野において共通問題として用いられる<a href="https://ipsj.ixsq.nii.ac.jp/ej/?action=repository_action_common_download&item_id=94769&item_no=1&attribute_id=1&file_no=1">酒屋の在庫問題</a>を一部簡略化し，<br>
+    Javaを用いて実装したGUIアプリケーションです．</p>
+<p> StockManagementでは，ある酒屋の倉庫に対するお酒の搬入処理と，出庫依頼を行うことができます．</p>
+
+
+<p> お酒の在庫は，品名と数量で管理されます．StockManagementを起動するとどのお酒の在庫もない状態から始まります．<br>
+    お酒の在庫の状態は画面下部左側に表形式で表示されています．<br>
+    倉庫にコンテナの搬入があった場合は，画面上部左側にコンテナ内のお酒の品名と数量を入力します．<br>
+    受付係が出庫依頼を受けた場合は，画面上部中央に依頼されたお酒の品名と数量を入力します．<br>
+    <img src="../images/description_stockmanager/stock_start.png", class ="image_size">
+<p> 以下，搬入処理と出庫依頼処理のそれぞれについて説明します．</p>
+
+<h3> コンテナの搬入があった場合</h3>
+    <ul>
+        搬入されたコンテナ内のお酒の品名と数量を入力し，「搬入」ボタンを押します．<br>
+        <img src="../images/description_stockmanager/stock_arrive.png", class ="image_size"><br>
+        倉庫の在庫状況が更新されます．<br>
+        <img src="../images/description_stockmanager/stock_stock.png", class ="image_size"><br>
+    </ul>
+
+<h3> 受付係が出庫依頼を受けた場合</h3>
+    <ul>
+        出庫依頼があったお酒の品名と数量を入力し，「出庫依頼」ボタンを押します．<br>
+        <img src="../images/description_stockmanager/stock_request.jpg", class ="image_size"><br>
+        在庫が足りていた場合，依頼されたお酒が出庫されます．<br>
+        <img src="../images/description_stockmanager/stock_shipping.jpg", class ="image_size"><br>
+    </ul>
+    <ul>
+        再度，出庫依頼があったお酒の品名と数量を入力し，「出庫依頼」ボタンを押します．<br>
+        <img src="../images/description_stockmanager/stock_request2.png", class ="image_size"><br>
+        在庫が不足していた場合，お酒は出庫されず，画面下部右側の在庫不足リストに依頼内容が記録されます．<br>
+        <img src="../images/description_stockmanager/stock_shortage.png", class ="image_size"><br>
+    </ul>
+    <ul>
+        在庫が不足していたお酒が搬入されます．<br>
+        <img src="../images/description_stockmanager/stock_arrive2.png", class ="image_size"><br>
+        在庫不足が解消されたので，在庫不足リストに記載された依頼にしたがってお酒が出庫されます．<br>
+        同時に，在庫の状況と在庫不足リストが更新されます．<br>
+        <img src="../images/description_stockmanager/stock_shipping2.png", class ="image_size"><br>
+    </ul>
+
+<p style="margin-bottom:3em;"></p>
+<a href="EnvironmentStockManagement.html">次へ</a>
+<p style="margin-bottom:5em;"></p>
+    
+</body>

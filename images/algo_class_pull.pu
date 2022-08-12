@@ -1,0 +1,25 @@
+@startuml
+title Algolikeクラス図(PULL)
+class Algo{
+    Algo()
+    getHandsA() : List<Card>
+    getLoseA() : boolean
+}
+class HandsA{
+    value : List<Card>
+    HandsA()
+    updateResultByDrawingA(...) : void
+    updateResultByDrawingB(...) : void
+    updateResultBySelectingA(...) : void
+    updateResultBySelectingB(...) : void
+    getValue() : List<Card>
+}
+class LoseA{
+    LoseA(handsA : HandsA)
+    getValue() : boolean
+}
+Algo -->"1" HandsA :handsA
+Algo -->"1" LoseA  :loseA
+HandsA <-"1" LoseA : handsA
+
+@enduml

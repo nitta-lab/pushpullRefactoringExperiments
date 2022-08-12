@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<title>Argolike説明</title>
+<meta charset="UTF-8">
+</head>
+<style>
+.image_size{
+	width: 600px;
+	height: 400px;
+}
+</style>
+<body>
+<h1>Algolike の概要説明</h1>
+<p>「Algolike」は，カードゲーム「<a href="https://www.sansu-olympic.gr.jp/algo/">algo</a>」を基にしたゲームプログラムです．</p>
+<p> Algolikeでは，「0」から「11」までの数字が書かれた計12枚のカードを用いて，プレイヤーとCPUが対戦します．</p>
+
+
+<p> ゲーム開始時，12枚のカードを裏向けにして山札を作り，これを「デッキ」とします．<br>
+    そして，各プレイヤーにデッキからカードを2枚配り．それを各プレイヤーの最初の「手札」とします．<br>
+    なお，各プレイヤーは自分から見て左側から数字が小さい順になるように，相手にわからないよう手札のカードを裏向けにして並べなければなりません．<br>
+    画面では，裏向きになっているカードは黒色で表示されます．(自分の手札は下側に表示されます)<br>
+    <img src="../images/description_algo/algo_start.png", class ="image_size">
+<p> ゲームはプレイヤーが交互に「アタック」という行動を繰り返して進行していきます．<br>
+    アタックとは，相手の裏のカードを選んで，その数字を当てていくことをいいます．<br>
+    以下では，行動しているプレイヤーを「自分」，自分からみた相手プレイヤーを「相手」とします．</p>
+
+<h3> デッキにカードが存在する場合</h3>
+    <ul>
+        自分はデッキからカードを1枚引いて，相手に見えないように自分だけ見ます．<br>
+        <img src="../images/description_algo/algo_draw.png", class ="image_size"><br>
+        そして，相手の手札の中から，数字を当てるカードを選びます．<br>
+        <img src="../images/description_algo/algo_target.png", class ="image_size"><br>
+        そのカードに対して，自分の手札や，相手の手札の状態をもとに，数字を推理します．そして，推理した数字を宣言します．<br>
+        <img src="../images/description_algo/algo_declare.png", class ="image_size"><br>
+    </ul>
+
+<h3> デッキにカードが存在しない場合</h3>
+<ul>
+    自分は手札から裏のカードを一枚選んで，相手の手札の中から数字を当てるカードを選びます．<br>
+    <img src="../images/description_algo/algo_select.png", class ="image_size"><br>
+    これ以降はデッキにカードが存在する場合と同様の流れで，推理した数字を宣言します．<br>
+</ul>
+
+<p>この時，相手は選ばれたカードと宣言された数字が一致しているかどうかを「Yes」か「No」で答えます．<br>
+    もし「No」だった場合，アタックは失敗となり，アタックに使用した自分のカードを表にして数字順になるように自分の手札に加えます．<br>
+    画面では，表になったカードは白色で表示されます．
+<ul> <img src="../images/description_algo/algo_failed.png", class ="image_size"><br></ul>
+    もし「Yes」だった場合，アタックは成功となり，相手は当てられたカードを表にします．
+    アタックに使用した自分のカードは裏向きのまま，数字順になるように自分の手札に加えます．</p>
+
+<ul><img src="../images/description_algo/algo_succeed.png", class ="image_size"><br></ul>
+<p>そして，ターンを相手に渡します．</p>
+<img src="../images/description_algo/algo_bot.png", class ="image_size">
+<p>これを交互に繰り返します。</p>
+
+<p>プレイヤーの手札のカードが全て表になったとき、そのプレイヤーはゲームに敗北します。</p>
+<img src="../images/description_algo/algo_win.png", class ="image_size">
+<img src="../images/description_algo/algo_lose.png", class ="image_size">
+
+<p>プレイヤーの手札のカードが全て表になったとき、そのプレイヤーはゲームに敗北します。</p>
+<p style="margin-bottom:3em;"></p>
+<a href="EnvironmentAlgoLike.html">次へ</a>
+<p style="margin-bottom:5em;"></p>
+    
+</body>

@@ -1,0 +1,15 @@
+@startuml
+title 華氏摂氏変換クラス図(PULL)
+class TempF{
+    value : double
+    TempF()
+    setValue(tempF: double)  : void
+    getValue() : double
+}
+class TempC{
+    TempC(tempF : TempF)
+    getValue() : double
+}
+TempF "1"<- TempC : tempF
+
+@enduml

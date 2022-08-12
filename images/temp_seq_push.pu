@@ -1,0 +1,25 @@
+@startuml
+title 華氏摂氏変換シーケンス図(PUSH)
+hide footbox
+participant "tempF:TempF" as tempF
+participant "tempC:TempC" as tempC
+[-> tempF : setValue(tempF: double)
+activate tempF
+
+tempF -> tempC : updateTemp(tempF: double)
+activate tempC
+
+tempC --> tempF
+deactivate tempC
+
+tempF -->[
+deactivate tempF
+
+tempC <-] : getValue()
+activate tempC
+
+tempC -->] : Item
+deactivate tempC
+
+
+@enduml

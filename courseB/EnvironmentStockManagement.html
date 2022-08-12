@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <title>StockManagement の環境構築とテスト</title>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type = "text/css" href = "../prettify.css">
+</head>
+<style>
+.image_size{
+	width: 800px;
+	height: 550px;	
+}
+</style>
+<body>
+<h1>StockManagement の環境構築とテスト</h1>
+<p>StockManagement の Github のリポジトリは<a href="https://github.com/nitta-lab/StockManagementPull">こちら</a>です．クローンしてお手元の開発環境でビルドをし，動作確認を行ってください．</p>
+
+<p> StockManagement は Gradle プロジェクトとして作成しています．<br>
+    <ul>Eclipse 上でビルドする場合は，プロジェクトを右クリック→「構成」→「Gradle ネーチャーの追加」でGradleを動かせるようにしておいてください．
+    </ul>
+    プログラムを実行する際は，Gradle タスクの中から「application/run」を実行してください．<br>
+
+</p>
+<p>StockManagement のテストコードは /src/test/java/MainTest.java にあります．JUnitでテストすることができます．</p>
+<h2>StockManagement のテストシナリオ</h2>
+<p>MainTest.java では StockManagement における以下の一連の動作をテストしています．
+    <ol>
+        <li>商品Aが10個，搬入される．</li>
+        <li>商品Bが10個，搬入される．</li>
+        <li>倉庫には商品Aの在庫が10個，商品Bの在庫が10個ある．</li>
+        <li>商品Aを5個，出庫依頼される．</li>
+        <li>商品Aが5個，出庫される．</li>
+        <li>倉庫には商品Aの在庫が5個，商品Bの在庫が10個ある．</li>
+        <li>商品Aを10個，出庫依頼される．</li>
+        <li>Aの在庫が不足しているので，在庫不足リストに商品Aが10個登録される．</li>
+        <li>商品Aが10個，搬入される．</li>
+        <li>Aの在庫不足が解消されたので，商品Aが10個出庫される．</li>
+        <li>倉庫には商品Aの在庫が5個，商品Bの在庫が10個ある．</li>
+    </ol>
+</p>
+    
+<p style="margin-bottom:3em;"></p>
+<a href="ProblemB1.html">次へ</a>
+<p style="margin-bottom:5em;"></p>
+    
+</body>

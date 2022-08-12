@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <title>Argolike の環境構築とテスト</title>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type = "text/css" href = "../prettify.css">
+</head>
+<style>
+.image_size{
+	width: 800px;
+	height: 550px;	
+}
+</style>
+<body>
+<h1>Algolike の環境構築とテスト</h1>
+<p>Algolike の Github のリポジトリは<a href="https://github.com/nitta-lab/AlgolikePull">こちら</a>です．クローンしてお手元の開発環境でビルドをし，動作確認を行ってください．</p>
+
+<p> Algolike は Gradle プロジェクトとして作成しています．<br>
+    <ul>Eclipse 上でビルドする場合は，プロジェクトを右クリック→「構成」→「Gradle ネーチャーの追加」でGradleを動かせるようにしておいてください．
+    </ul>
+    プログラムを実行する際は，Gradle タスクの中から「application/run」を実行してください．<br>
+
+</p>
+<p>Algolike のテストコードは /src/test/java/MainTest.java にあります．JUnitでテストすることができます．</p>
+<h2>Algolike のテストシナリオ</h2>
+<p>MainTest.java では Algolike における以下の一連の動作をテストしています．
+    <ol>
+        <li>自分はカードを1枚引き，自分から見て右から1番目にあるCPUのカードに対して「3」を宣言する．</li>
+        <li>自分のアタックは失敗する．</li>
+        <li>CPUはカードを1枚引き，自分の手札の左から3番目のカードに対して「2」を宣言する．</li>
+        <li>CPUのアタックは失敗する．</li>
+        <li>自分はカードを1枚引き，右から3番目にあるCPUのカードに対して「3」を宣言する．</li>
+        <li>自分のアタックは失敗する．</li>
+        <li>CPUはカードを1枚引き，自分の手札の左から1番目のカードに対して「0」を宣言する．</li>
+        <li>CPUのアタックは成功する．</li>
+        <li>自分は左から2番目のカードをアタックに使用し，CPUの右から1番目のカードに対して「3」を宣言する．</li>
+        <li>自分のアタックは失敗する．</li>
+        <li>自分の手札が全て表になったので，自分は敗北する．</li>
+    </ol>
+</p>
+    
+<p style="margin-bottom:3em;"></p>
+<a href="ProblemD1.html">次へ</a>
+<p style="margin-bottom:5em;"></p>
+    
+</body>

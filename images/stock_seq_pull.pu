@@ -1,0 +1,26 @@
+@startuml
+title StockManagerシーケンス図(PULL)
+hide footbox
+participant "handling:Handling" as handling
+participant "shipping:Shipping" as shipping
+[-> handling : update...(...)
+activate handling
+
+handling -->[
+deactivate handling
+
+shipping <-] : getValue()
+activate shipping
+
+handling <- shipping : getValue()
+activate shipping
+
+shipping <-- handling : ItemHandling
+deactivate handling
+
+
+shipping -->] : Item
+deactivate shipping
+
+
+@enduml

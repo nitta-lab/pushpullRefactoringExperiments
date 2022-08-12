@@ -1,0 +1,25 @@
+@startuml
+title Algolikeシーケンス図(PUSH)
+hide footbox
+participant "handsA:HandsA" as handsA
+participant "loseA:LoseA" as loseA
+[-> handsA : updateResultBy...(...)
+activate handsA
+
+handsA -> loseA : updateHandsA(handsA : List<Card>)
+activate loseA
+
+loseA --> handsA
+deactivate loseA
+
+handsA -->[
+deactivate handsA 
+
+loseA <-] : getValue()
+activate loseA
+
+loseA -->] : boolean
+deactivate loseA 
+
+
+@enduml

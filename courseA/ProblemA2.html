@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <title>課題A2</title>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type = "text/css" href = "../prettify.css">
+</head>
+<style>
+    .image_size{
+        width: 800px;
+        height: 550px;
+    }
+</style>
+<body>
+<h1>課題A2</h1>
+
+<hr size="5">
+
+<h2>課題の概要</h2>
+
+<p>
+    課題A2では，Algolike の HandsA から LoseA へのデータ転送について見ていきます．
+    HandsA は，プレイヤーのすべての手札を管理しているクラスで，LoseAは各ターンでプレイヤーがゲームに負けたか否かを表すクラスです．<br>
+    この課題では，
+
+    <blockquote>
+        <strong>「HandsA の情報が更新されたときにその情報を LoseA にPULL型で転送しているプログラムを，PUSH型で転送するようにリファクタリングすること」</strong>
+    </blockquote>
+
+    を目的とします．<br>
+    リファクタリングの詳しい作業手順は以下で説明します．
+</p>
+
+<hr size="5">
+
+<h2>リファクタリング作業</h2>
+
+<p>
+    以下では，リファクタリングに要した時間を測っていただきますので，お手元に時計をご用意ください．<br>
+    時間計測にあたって，急いで作業していただく必要はまったくありません．<br>
+    最初の課題から最後の課題まで一定のペースを保てるよう, <font color="red">正しくリファクタリングを行うこと</font>を意識してください．<br>
+    この課題で作業していただく内容は，
+    <blockquote>
+        <strong>「HandsA の情報が更新されたときにその情報を LoseA にPULL型で転送しているプログラムを，PUSH型で転送するようにリファクタリングすること」</strong>
+    </blockquote>
+    です．<br>
+    開発環境を立ち上げてソースコードの確認をしていただいて構いませんが，ソースコードの変更は時間計測の準備ができるまで行わないで下さい．<br>
+    リファクタリングの作業手順を以下に説明します．
+</p>
+<p>
+    まず，現時点での HandsA から LoseA へのデータ転送に関するクラス図とシーケンス図を以下に示します．<br>
+    <img src="../images/algo_class_pull.jpg" class = "halfSize">
+    <img src="../images/algo_seq_pull.jpg" class = "halfSize"><br>
+    現時点ではPULL型のデータ転送で実装されているため，LoseA クラスの getValue() メソッドから HandsA クラスの getValue() メソッドを呼び出すために LoseA クラスが HandsA クラスを参照しています．<br>
+    ここで Algo クラスは，初期化時に HandsA クラスや LoseA クラスのインスタンスを生成し，それらのインスタンスを関連付ける役割を担っています．<br>
+    また，HandsA クラスや LoseA クラスにアクセスするための入口（Facade）としての役割も担っています．<br>
+    Algo，HandsA，LoseA クラスのいずれも resources パッケージの中に入っています．<br>
+</p>
+<p>
+    これを，以下のクラス図とシーケンス図に示すようなPUSH型のデータ転送になるよう，手作業でリファクタリングを行っていただきます．<br>
+    <img src="../images/algo_class_push.jpg" class = "halfSize">
+    <img src="../images/algo_seq_push.jpg" class = "halfSize"><br>
+    今度はPUSH型のデータ転送であるため，HandsA クラスの updateResultBy...() メソッドから LoseA クラスの updateHandsA() メソッドを呼び出すために HandsA クラスが LoseA クラスを参照していることに注意してください．<br>
+</p>
+<p>
+    リファクタリングの作業手順の詳細を以下に示します．<br>
+    <ol>
+    <li>テストプログラムを実行して正しく動作することを確認する．</li>
+    <li>HandsA クラスに，LoseA クラスのインスタンスを参照するフィールド LoseA loseA を追加する．</li>
+    <li>HandsA クラスに，LoseA クラスのインスタンスを引数に取るコンストラクタを追加する．</li>
+    <li>LoseA クラスのコンストラクタを，HandsA クラスのインスタンスを引数に取らないように書き換える．</li>
+    <li>LoseA クラスのフィールド handsA を削除する．</li>
+    <li>Algo クラスのコンストラクタ内で，HandsA クラスのインスタンスが LoseA クラスのインスタンスを参照するよう，インスタンスの生成順や生成方法を変更する．</li>
+    <li>LoseA クラスにプレイヤーの勝敗結果を保存するためのフィールド boolean value を追加する．</li>
+    <li>LoseA クラスに void updateHandsA(List&ltCard&gt handsA) メソッドを追加する．</li>
+    <li>HandsA クラスの updateResultBy...() メソッド(4つある)の最後に，LoseA クラスの updateHandsA() メソッドをフィールド value を引数として呼び出す行を追加する．</li>
+    <li>LoseA クラスの getValue() メソッド内で行っていた，プレイヤーの手札の情報をもとに勝敗判定を行う処理を，updateHandsA() メソッドに移動し，判定結果を value フィールドに保存するようにする．</li>
+    <li>LoseA クラスの getValue() メソッドを value フィールドの値を返すように書き換える．</li>
+    <li>テストプログラムを実行して正しく動作することを確認する．</li>
+    </ol>
+</p>
+<p>
+    作業に着手する前に，メッセージでお伝えした自分専用のブランチ（user??）を切って，一度プッシュを行ってください．<br>
+    プッシュを行った後，開発環境の準備ができれば，<font color="red">時間計測を開始</font>してください. 時間計測はできる限り，30秒以内の単位での計測をお願いします. <br>
+    テストプログラムが正しく動作するまでは作業完了とは見なされないので注意してください．
+</p>
+
+<p>
+    リファクタリングの作業が完了したら作業時間を記録し，その後，作業結果を自分専用のブランチにコミット＆プッシュしてください．<br>
+    ただし，<font color="red">main ブランチには決してマージをしないように，また自分専用のブランチを決して削除しないように</font>注意してください． <br>
+    プッシュ後に，以下のアンケートにお答えください．
+</p>
+
+<blockquote>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScs6FYWlhZb27QHg1ZGKJpBExNn2_6lNJ1ms_2aVU2KbuvUAg/viewform?usp=sf_link" target="_blank">アンケート回答</a>
+</blockquote>
+
+<hr size="5">
+
+<p style="margin-bottom:2em;"></p>
+<a href="../Closing.html">次へ</a>
+</body>

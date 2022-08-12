@@ -1,0 +1,23 @@
+@startuml
+title StockManagementクラス図(PULL)
+class StockManagement{
+    StockManagement()
+    getHandling() : ItemHandling
+    getShipping() : Item
+}
+class Handling{
+    value : ItemHandling
+    Handling()
+    updateAvailable(...)  : void
+    updateRequest(...)  : void
+    getValue() : ItemHandling
+}
+class Shipping{
+    Shipping(handling : Handling)
+    getValue() : Item
+}
+StockManagement -->"1" Handling :handling
+StockManagement -->"1" Shipping  :shipping
+Handling <-"1" Shipping : handling
+
+@enduml
